@@ -1,0 +1,78 @@
+# Структура проекта управления инверторами
+
+## Организация файлов
+
+Проект состоит из следующих компонентов:
+
+### 1. Основные модули
+
+- `deye_protocol.py` - Класс для работы с инверторами Deye/Dextrom
+- `anern_anenji_adapters.py` - Классы для работы с инверторами Anern и Anenji
+- `universal_adapter.py` - Универсальный адаптер для работы с различными типами инверторов
+- `inverter_manager.py` - Управляющий класс для работы с инверторами
+
+### 2. Веб-интерфейс
+
+- `web_interface.py` - Веб-сервер Flask для мониторинга и управления
+- `templates/` - Директория с шаблонами HTML
+  - `index.html` - Главная страница
+  - `inverter_details.html` - Детальная страница инвертора
+  - `settings.html` - Страница настроек
+
+### 3. Документация
+
+- `docs/general_architecture.md` - Общая архитектура системы
+- `docs/inverter_compatibility.md` - Совместимость и особенности различных инверторов
+- `docs/installation.md` - Инструкция по установке
+- `docs/configuration.md` - Настройка и конфигурация системы
+- `docs/user_guide.md` - Руководство пользователя
+
+### 4. Конфигурация
+
+- `config/inverter_manager_config.json` - Примеры конфигурации для инвертор-менеджера
+- `config/web_config.json` - Пример конфигурации для веб-интерфейса
+
+## Установка и запуск
+
+1. Создайте виртуальное окружение Python:
+```bash
+python -m venv venv
+source venv/bin/activate  # для Linux/Mac
+venv\Scripts\activate     # для Windows
+```
+
+2. Установите зависимости:
+```bash
+pip install -r requirements.txt
+```
+
+3. Настройте конфигурацию:
+```bash
+cp config/inverter_manager_config.json.example config/inverter_manager_config.json
+cp config/web_config.json.example config/web_config.json
+```
+
+4. Запустите систему управления инверторами:
+```bash
+python inverter_manager.py config/inverter_manager_config.json
+```
+
+5. Запустите веб-интерфейс:
+```bash
+python web_interface.py config/web_config.json
+```
+
+## Зависимости
+
+Основные библиотеки, используемые в проекте:
+
+```
+Flask==2.0.1
+pymodbus==2.5.3
+paho-mqtt==1.6.1
+requests==2.26.0
+schedule==1.1.0
+influxdb==5.3.1
+```
+
+Полный список зависимостей находится в файле `requirements.txt`.
